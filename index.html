@@ -9,10 +9,9 @@
 </head>
 
 <body>
-    <!-- mon titre -->
+    <h1 class="titre_principal">Répertoire de contacts</h1>
 
 
-    <h1>Répertoire des contacts</h1>
 
     <!-- mon formulaire et ma liste -->
 
@@ -21,9 +20,10 @@
 
         <!-- mon formulaire -->
 
-
+        
         <div id="formulaire">
-            <form action="">
+            <h1 class="mes_titres_1">formulaire des contacts</h1>
+            <form action="" class="form_style">
                 <label for="Prenom">Prénom</label>
                 <input type="text">
                 <label for="Nom">Nom</label>
@@ -37,15 +37,19 @@
                 <label for="Bio" class="form_input_Bio">Bio</label>
                 <input type="text">
                 <input type="file" id="form_input_photo" placeholder="Déposez la photo ici">
-                <button type="submit" id="form_button_submit">Créer</button>
-                <button type="reset" id="form_button_reset">Rénit</button>
+                <div class="button">
+                    <button type="submit" id="form_button_submit">Créer</button>
+                    <button type="reset" id="form_button_reset">Rénit</button>
+                </div>
+
             </form>
         </div>
 
         <!-- ma liste de contact -->
 
-        
+
         <div id="liste_des_contacts">
+            <h1 class="mes_titres_2">Liste des contact</h1>
             <ul></ul>
         </div>
     </div>
