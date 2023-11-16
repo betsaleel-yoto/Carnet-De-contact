@@ -5,7 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mon Carnet D'adresse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat+Alternates:wght@700&family=Montserrat:wght@400;700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat&family=Montserrat+Alternates:wght@700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Mon Carnet De Contacts</title>
 </head>
 
 <body>
@@ -20,29 +30,35 @@
 
         <!-- mon formulaire -->
 
-        
-        <div id="formulaire">
-            <h1 class="mes_titres_1">formulaire des contacts</h1>
-            <form action="" class="form_style">
-                <label for="Prenom">Prénom</label>
-                <input type="text">
-                <label for="Nom">Nom</label>
-                <input type="text">
-                <label for="Télephone">Télephone</label>
-                <input type="text">
-                <label for="Groupe">Groupe</label>
-                <input type="text">
-                <label for="E-mail">Email</label>
-                <input type="text">
-                <label for="Bio" class="form_input_Bio">Bio</label>
-                <input type="text">
-                <input type="file" id="form_input_photo" placeholder="Déposez la photo ici">
-                <div class="button">
-                    <button type="submit" id="form_button_submit">Créer</button>
-                    <button type="reset" id="form_button_reset">Rénit</button>
-                </div>
 
-            </form>
+        <div id="formulaire">
+            <div class="h1_form_button_border">
+                <h1 class="mes_titres_1">Formulaire des contacts</h1>
+                <form action="" class="form_style">
+                    <label for="Prenom">Prénom</label>
+                    <input type="text">
+                    <label for="Nom">Nom</label>
+                    <input type="text">
+                    <label for="Télephone">Télephone</label>
+                    <input type="text">
+                    <label for="Groupe">Groupe</label>
+                    <input type="text">
+                    <label for="E-mail">Email</label>
+                    <input type="text">
+                    <label for="Bio" class="form_input_Bio">Bio</label>
+                    <input type="text">
+                    <div class="form_photo_input_border">
+                        <input type="file" id="form_input_photo" placeholder="Déposez la photo ici">
+                    </div>
+
+                    <div class="button">
+                        <button type="submit" id="form_button_submit">Créer</button>
+                        <button type="reset" id="form_button_reset">Rénit</button>
+                    </div>
+                </form>
+            </div>
+
+
         </div>
 
         <!-- ma liste de contact -->
