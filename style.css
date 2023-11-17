@@ -11,7 +11,7 @@
 .titre_principal {
     padding-bottom: 1rem;
     padding-top: 5px;
-    padding-left:5px ;
+    padding-left: 5px;
 }
 
 
@@ -69,18 +69,19 @@ label {
     padding: 15px;
     color: #077FD5;
 }
-.form_photo_input_border{
+
+.form_photo_input_border {
     border: 2px dashed #d0cdcd;
     margin-top: 2rem;
     height: 20rem;
 }
-.form_photo_input_border input{
+
+.form_photo_input_border input {
     padding-bottom: 8rem;
 }
 
-.form_input_photo{
-    
-}
+.form_input_photo {}
+
 .h1_form_button_border {
     width: 90%;
     border: 2px solid #E1E1E1;
@@ -109,12 +110,22 @@ label {
 
 #form_button_reset {
     margin-left: 20px;
-    background-color: #FF3838; 
+    background-color: #FF3838;
 }
 
-#form_button_submit{
+#form_button_submit {
     background-color: #077FD5;
 }
+
+/* Partie hover Button */
+#form_button_submit:hover{
+background-color: #045691;
+}
+
+#form_button_reset:hover{
+background-color: #ad2424;
+}
+
 
 /* ma liste de contact */
 
@@ -123,35 +134,37 @@ label {
     width: 50%;
 }
 
+
+
 /* partie responsive */
 
-@media only screen and (max-width:1186px){
+@media only screen and (max-width:1186px) {
 
     /* mon formulaire et ma liste pris ensemble */
 
 
-    .formulaire_et_liste_des_contacts{
+    .formulaire_et_liste_des_contacts {
         display: flex;
         flex-direction: column;
         width: 100%;
         border: 2px solid transparent;
     }
-   
+
 
     /* mon formulaire */
 
 
-    #formulaire{
+    #formulaire {
         width: 100%;
     }
 
-/* ma liste des contacts */
+    /* ma liste des contacts */
 
-    #liste_des_contacts{
+    #liste_des_contacts {
         width: 100%;
     }
 
-    .mes_titres_2{
+    .mes_titres_2 {
         margin-top: 5rem;
     }
 }
