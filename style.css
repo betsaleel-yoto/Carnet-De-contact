@@ -134,7 +134,25 @@ background-color: #ad2424;
     width: 50%;
 }
 
+img{
+    width: 12rem;
+    height: 12rem;
+    border-radius: 100%;
+}
+.liste_des_contacts_details{
+    display: flex;
+    border: 2px solid #E1E1E1;
+}
+.contacts_details_nom_tel_groupe_paragraphe{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    padding: 2rem;
+}
 
+.span_images img{
+    padding: 2rem;
+}
 
 /* partie responsive */
 
@@ -167,4 +185,13 @@ background-color: #ad2424;
     .mes_titres_2 {
         margin-top: 5rem;
     }
+
+
+    /* mon titre prinncipal */
+
+.titre_principal{
+    text-align: center;
 }
+}
+
+
