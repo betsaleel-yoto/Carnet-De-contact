@@ -134,6 +134,11 @@ background-color: #ad2424;
     width: 50%;
     
 }
+/* enlever la bordure par defaut de tous les inputs */
+/*  */
+input:focus{
+    outline: none;
+}
 .erreur{
     border-color: #FF3838;
 }
