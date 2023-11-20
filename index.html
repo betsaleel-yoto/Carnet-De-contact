@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat&family=Montserrat+Alternates:wght@700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
         rel="stylesheet">
     <title>Mon Carnet De Contacts</title>
+    <script defer src="script.js" ></script>
 </head>
 
 <body>
@@ -34,17 +35,22 @@
         <div id="formulaire">
             <div class="h1_form_button_border">
                 <h1 class="mes_titres_1">Formulaire des contacts</h1>
-                <form action="" class="form_style">
-                    <label for="Prenom">Prénom</label>
-                    <input type="text" class="prenom">
-                    <label for="Nom">Nom</label>
-                    <input type="text" class="nom">
-                    <label for="Télephone">Télephone</label>
-                    <input type="text" class="telephone">
-                    <label for="Groupe">Groupe</label>
-                    <input type="text" class="groupe">
-                    <label for="E-mail">Email</label>
-                    <input type="email" class="groupe">
+                <form action="/" class="form_style">
+                        <label for="Prenom">Prénom</label>
+                        <input type="text" class="prenom" >
+                        <div id="error-prenom"></div>
+                        <label for="Nom">Nom</label>
+                        <input type="text" class="nom" >
+                        <div id="error-nom"></div>
+                        <label for="Télephone">Télephone</label>
+                        <input type="text" class="telephone" >
+                        <div id="error-telephone"></div>
+                        <label for="Groupe">Groupe</label>
+                        <input type="text" class="groupe" >
+                        <div id="error-groupe"></div>
+                        <label for="E-mail">Email</label>
+                        <input type="text" class="email" >
+                        <div id="error-email"></div>
                     <label for="Bio" class="form_input_Bio">Bio</label>
                     <input type="text" class="bio">
                     <div class="form_photo_input_border">
@@ -66,39 +72,9 @@
 
         <div id="liste_des_contacts">
             <h1 class="mes_titres_2">Liste des contacts</h1>
-            <ul class="ma_liste">
-                <!-- <li class="liste_des_contacts_details">
-                    <span class="span_images">
-                        <img src="images/842B5831.jpg" alt="test">
-                    </span>
-                    <div class="contacts_details_nom_tel_groupe_paragraphe">
-                        <div class="nom_et_groupe_tel">
-                            <span class="prenom_nom_groupe">
-                                <p>Prénom Nom - Groupe</p>
-                            </span><br>
-                            <span class="telephone">
-                                <p>Téléphone</p>
-                            </span><br>
-                        </div>
-                        <div class="paragraphe_bio">
-                            <span class="paragraphe_propre">
-                                <p>Lorem ipsum dolor
-                                    sit amet consectetur adipisicing elit. Similique suscipit ullam nobis molestiae
-                                    quisquam
-                                    dolorum consequatur sequi maxime aut repellat itaque eius at, quis ad laboriosam
-                                    impedit
-                                    in quibusdam necessitatibus</p>
-                            </span>
-                        </div>
-
-
-                    </div>
-
-                </li> -->
-            </ul>
+            <ul class="mes_titres_2_liste"></ul>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 
 </html>
