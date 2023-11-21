@@ -28,14 +28,16 @@ prenom.onblur= verifierPrenom;
             prenom.classList.add('erreur');
             prenom.classList.remove('succes')
             // event.preventDefault();
+            return false
 
         }else{
             prenom.classList.add('succes');
             prenom.classList.remove('erreur');
             error.innerHTML='';
             console.log('bon')
+            return prenomValue;
+
         }
-        return prenomValue;
 
     }
     verifierPrenom()
@@ -43,45 +45,48 @@ prenom.onblur= verifierPrenom;
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
-email.onblur=verifierEmail;
+        email.onblur=verifierEmail;
 
-function verifierEmail (){
-const emailValue = email.value.trim();
+        function verifierEmail (){
+            const emailValue = email.value.trim();
 
-// console.log(emailValue);
-if(emailValue === ''){  
-        errormail.innerHTML='Veuillez saisir une adresse mail';
-        errormail.style.color='red';
-        email.classList.add('erreur');
-        email.classList.remove('succes');
+            // console.log(emailValue);
+            if(emailValue === ''){  
+            errormail.innerHTML='Veuillez saisir une adresse mail';
+            errormail.style.color='red';
+            email.classList.add('erreur');
+            email.classList.remove('succes');
+            return false
+            // event.preventDefault();
+            
+            
+        } else if (!validateEmail(emailValue)){
+            errormail.innerHTML='veuiller saisir une adresse valide';
+            errormail.style.color='red';
+            email.classList.add('erreur');
+            email.classList.remove('succes');
+            return false
         // event.preventDefault();
-        
-        
-    } else if (!validateEmail(emailValue)){
-        errormail.innerHTML='veuiller saisir une adresse valide';
-        errormail.style.color='red';
-        email.classList.add('erreur');
-        email.classList.remove('succes');
-    // event.preventDefault();
-        
+            
 
-    }else if (tab.includes(emailValue)){
-        errormail.innerHTML='cette adresse existe déjà';
-        errormail.style.color='red';
-        email.classList.add('erreur');
-        email.classList.remove('succes');
-    // event.preventDefault();
-        
+        }else if (tab.includes(emailValue)){
+            errormail.innerHTML='cette adresse existe déjà';
+            errormail.style.color='red';
+            email.classList.add('erreur');
+            email.classList.remove('succes');
+            return false
+        // event.preventDefault();
 
-    }else{
-        email.classList.add('succes');
-        email.classList.remove('erreur');
-        errormail.innerHTML='';
+        }else{
+            email.classList.add('succes');
+            email.classList.remove('erreur');
+            errormail.innerHTML='';
+            return emailValue;
+
+        }
+        // console.log(emailValue);
     }
-    // console.log(emailValue);
-    return emailValue;
-}
-verifierEmail()
+    verifierEmail()
 
     // vérification du mail
     // la foncion de vérification des inputs
@@ -108,7 +113,7 @@ verifierEmail()
 
 // // fonction d'ajout des contacts dans le tableau
 // function ajouterContact() {
-//     // let prenomValue=verifierPrenom()
+//     // let emailvalue=verifierPrenom()
 //     // console.log(verifierEmail)
     
 //     tab.push({
