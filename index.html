@@ -1,104 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat+Alternates:wght@700&family=Montserrat:wght@400;700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat&family=Montserrat+Alternates:wght@700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
-        rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Mon Carnet De Contacts</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1 class="titre_principal">Répertoire de contacts</h1>
-
-
 
     <!-- mon formulaire et ma liste -->
 
-
     <div class="formulaire_et_liste_des_contacts">
+      <!-- mon formulaire -->
 
-        <!-- mon formulaire -->
-
-
-        <div id="formulaire">
-            <div class="h1_form_button_border">
-                <h1 class="mes_titres_1">Formulaire des contacts</h1>
-                <form action="" class="form_style">
-                    <label for="Prenom">Prénom</label>
-                    <input type="text" class="prenom">
-                    <label for="Nom">Nom</label>
-                    <input type="text" class="nom">
-                    <label for="Télephone">Télephone</label>
-                    <input type="text" class="telephone">
-                    <label for="Groupe">Groupe</label>
-                    <input type="text" class="groupe">
-                    <label for="E-mail">Email</label>
-                    <input type="email" class="groupe">
-                    <label for="Bio" class="form_input_Bio">Bio</label>
-                    <input type="text" class="bio">
-                    <div class="form_photo_input_border">
-                        <input type="file" id="form_input_photo" placeholder="Déposez la photo ici">
-                    </div>
-
-                    <div class="button">
-                        <button type="submit" id="form_button_submit">Créer</button>
-                        <button type="reset" id="form_button_reset">Rénit</button>
-                    </div>
-                </form>
+      <div id="formulaire">
+        <div class="h1_form_button_border">
+          <h1 class="mes_titres_1">Formulaire des contacts</h1>
+          <form action="" class="form_style">
+            <label for="Prenom">Prénom</label>
+            <input type="text" class="prenom champsSaisie" />
+            <label for="Nom">Nom </label>
+            <input type="text" class="nom champsSaisie" />
+            <label for="Télephone">Télephone</label>
+            <input type="text" class="telephone champsSaisie" />
+            <label for="Groupe">Groupe</label>
+            <input type="text" class="groupe champsSaisie" />
+            <label for="E-mail">Email</label>
+            <input type="email" class="email champsSaisie" />
+            <label for="Bio" class="form_input_Bio">Bio</label>
+            <input type="text" class="bio champsSaisie" />
+            <div class="form_photo_input_border">
+              <label for="form_input_photo" class="form_input_photo_label"
+                >Déposez la photo ici</label
+              >
+              <input
+                type="file"
+                id="form_input_photo"
+                accept="image/jpeg,image/png, image/jpg"
+                class="input_photo"
+              />
             </div>
 
-
+            <div class="button">
+              <button type="button" id="form_button_submit">Créer</button>
+              <button type="button" id="form_button_reset">Rénit</button>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <!-- ma liste de contact -->
+      <!-- ma liste de contact -->
 
-
-        <div id="liste_des_contacts">
-            <h1 class="mes_titres_2">Liste des contacts</h1>
-            <ul class="ma_liste">
-                <!-- <li class="liste_des_contacts_details">
-                    <span class="span_images">
-                        <img src="images/842B5831.jpg" alt="test">
-                    </span>
-                    <div class="contacts_details_nom_tel_groupe_paragraphe">
-                        <div class="nom_et_groupe_tel">
-                            <span class="prenom_nom_groupe">
-                                <p>Prénom Nom - Groupe</p>
-                            </span><br>
-                            <span class="telephone">
-                                <p>Téléphone</p>
-                            </span><br>
-                        </div>
-                        <div class="paragraphe_bio">
-                            <span class="paragraphe_propre">
-                                <p>Lorem ipsum dolor
-                                    sit amet consectetur adipisicing elit. Similique suscipit ullam nobis molestiae
-                                    quisquam
-                                    dolorum consequatur sequi maxime aut repellat itaque eius at, quis ad laboriosam
-                                    impedit
-                                    in quibusdam necessitatibus</p>
-                            </span>
-                        </div>
-
-
-                    </div>
-
-                </li> -->
-            </ul>
-        </div>
+      <div id="liste_des_contacts">
+        <h1 class="mes_titres_2">Liste des contacts</h1>
+        <ul class="ma_liste"></ul>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
