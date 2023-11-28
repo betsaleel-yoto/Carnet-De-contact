@@ -8,11 +8,6 @@ function addContact() {
   const group = document.querySelector(".groupe").value;
   const email = document.querySelector(".email").value;
   const bio = document.querySelector(".bio").value;
-  const profilePic = document.querySelector("#profilePic");
-  const inputFile = document.querySelector("#form_input_photo");
-  inputFile.onchange = function () {
-    profilePic.src = URL.createObjectURL(inputFile.files[0]);
-  };
 
   // Validation logic can be added here
 
@@ -31,6 +26,21 @@ function addContact() {
 }
 
 function displayContacts() {
+  // const profilePic = document.querySelector("#profilePic");
+  // const inputFile = document.querySelector("#form_input_photo");
+
+  // let file = input.files[0];
+
+  // if (file) {
+  //   var reader = new FileReader();
+
+  //   reader.onload = function (e) {
+  //     photoProfil.src = e.target.result;
+  //   };
+
+  //   reader.readAsDataURL(file);
+  // }
+
   const contactList = document.querySelector(".ma_liste");
   contactList.innerHTML = "";
 
@@ -38,7 +48,7 @@ function displayContacts() {
     const li = document.createElement("li");
     li.innerHTML = `
     <span class="span_images"> 
-    <img src="images/profile-2398783_1280.png" alt="photo de profil" id= "profilePic">
+    <img src="#" alt="photo de profil" id= "profilePic">
 </span>
 <div class="contacts_details_nom_tel_groupe_paragraphe">
     <div class="nom_et_groupe_tel">
