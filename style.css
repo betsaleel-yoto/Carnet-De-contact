@@ -58,7 +58,7 @@ h1 {
 
 label {
   padding: 15px;
-  color: #077fd5;
+  color: #0880d6;
 }
 form input {
   padding: 15px;
@@ -74,18 +74,18 @@ form input {
   padding-bottom: 8rem;
 }
 
-#form_input_photo {
+/* #form_input_photo {
   opacity: 0;
-}
+} */
 * .input_photo {
   text-align: center;
 }
-.form_input_photo_label {
+/* .form_input_photo_label {
   margin-left: 16rem;
   position: relative;
   top: 4rem;
   color: #9e9c9c;
-}
+} */
 
 .h1_form_button_border {
   width: 90%;
@@ -122,10 +122,11 @@ button {
 }
 
 #form_button_submit {
-  background-color: #077fd5;
+  background-color: #0880d6;
 }
 
 /* Partie hover Button */
+
 #form_button_submit:hover {
   background-color: #045691;
 }
@@ -189,7 +190,7 @@ li {
     margin-top: 5rem;
   }
 
-  /* mon titre prinncipal */
+  /* mon titre principal */
 
   .titre_principal {
     text-align: center;
