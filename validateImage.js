@@ -1,4 +1,3 @@
-// import {tab} from './script.js';
 import { SetError } from "./functionUtil.js";
 
 export const image = document.getElementById('form_input_photo');
