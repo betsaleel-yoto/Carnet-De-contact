@@ -63,8 +63,6 @@ form.addEventListener('submit', event=>{
  function ajouterContact() {
     const groupe = document.querySelector('.groupe');
     const bio = document.querySelector('.bio');
-    // const groupeValue= groupe.value.trim();
-    // const bioValue = bio.value.trim();
       tab.push({
         prenom:prenom.value.trim(),
         nom:nom.value.trim(),

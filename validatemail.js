@@ -8,7 +8,6 @@ export const email=document.querySelector(".email")
     return re.test(String(email).toLowerCase());
 }
 
-// export const focus= email.onblur= verifyMail;
 export function verifyMail(element){
     const emailValue = element.value.trim();
 

@@ -4,7 +4,6 @@ import { SetSucces } from "./functionUtil.js";
 
 export const prenom= document.querySelector('.prenom');
 
-// export const valider = prenom.onblur= verifyPrenom;
 export function verifyPrenom(element){
     const prenomvalue = element.value.trim();
     let letter= prenomvalue.length;
