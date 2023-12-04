@@ -13,9 +13,6 @@
     padding-top: 5px;
     padding-left: 5px;
 }
-
-
-
 /* mes titres */
 h1 {
     color: white;
@@ -62,9 +59,9 @@ h1 {
     height: 50.25rem;
     margin: auto;
     height: 53rem;
-}
+} 
 
-form input,
+ form input,
 label {
     padding: 15px;
     color: #077FD5;
@@ -74,13 +71,36 @@ label {
     border: 2px dashed #d0cdcd;
     margin-top: 2rem;
     height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
+.form_photo_input_border .icon{
+    font-size: 50px;
+    color: #077FD5;
+    margin: 10px 10px;
+  
+}
 .form_photo_input_border input {
     padding-bottom: 8rem;
+    visibility: hidden;
 }
-
-.form_input_photo {}
+.form_photo_input_border .emplacement{
+    border: none;
+    background-color: #fff;
+} 
+/* coté js */
+.form_photo_input_border img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+.form_photo_input_border.active{
+    border : 2px solid green;
+}
 
 .h1_form_button_border {
     width: 90%;
@@ -139,12 +159,27 @@ background-color: #ad2424;
 input:focus{
     outline: none;
 }
-.erreur{
-    border-color: #FF3838;
-}
-.succes{
+/* span{
+    /* visibility: hidden; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} */
+
+
+
+
+
+ .error{
+    border-color: red;
+} 
+
+ .succes{
     border-color: green;
-}
+} 
+/* .annuler{
+    border-color: none;
+}  */
 
 
 /* partie responsive */

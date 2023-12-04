@@ -2,65 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat+Alternates:wght@700&family=Montserrat:wght@400;700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat&family=Montserrat+Alternates:wght@700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
-        rel="stylesheet">
-    <title>Mon Carnet De Contacts</title>
-    <script defer src="index.js" ></script>
-</head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link
+         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat+Alternates:wght@700&family=Montserrat:wght@400;700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
+         rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link
+         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:ital,wght@0,600;1,400&family=Croissant+One&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat&family=Montserrat+Alternates:wght@700&family=Neuton:wght@200;800&family=Playfair+Display:wght@500&family=Roboto&family=Titillium+Web:wght@400;700&display=swap"
+         rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <title>Mon Carnet De Contacts</title>
+     <script defer src="index.js" type="module"></script>
+ </head>
 
-<body>
-    <h1 class="titre_principal">Répertoire de contacts</h1>
-
-
-
-    <!-- mon formulaire et ma liste -->
+ <body>
+     <h1 class="titre_principal">Répertoire de contacts</h1>
 
 
-    <div class="formulaire_et_liste_des_contacts">
 
-        <!-- mon formulaire -->
+     <!-- mon formulaire et ma liste -->
 
 
-        <div id="formulaire">
+     <div class="formulaire_et_liste_des_contacts">
+
+         <!-- mon formulaire -->
+
+
+         <div id="formulaire">
             <div class="h1_form_button_border">
                 <h1 class="mes_titres_1">Formulaire des contacts</h1>
                 <form action="/" class="form_style">
                         <label for="Prenom">Prénom</label>
-                        <input type="text" class="prenom" >
-                        <div id="error-prenom"></div>
+                        <input type="text" class="prenom" id="postname" name="prenom" >
                         <label for="Nom">Nom</label>
-                        <input type="text" class="nom" >
-                        <div id="error-nom"></div>
+                        <input type="text" class="nom" id="name" name="nom"  >
                         <label for="Télephone">Télephone</label>
-                        <input type="text" class="telephone" >
-                        <div id="error-telephone"></div>
+                        <input type="text" class="telephone" id="phonenumber" name="telephone">
                         <label for="Groupe">Groupe</label>
-                        <input type="text" class="groupe" >
-                        <div id="error-groupe"></div>
+                        <input type="text" class="groupe" id="group" name="groupe" >
                         <label for="E-mail">Email</label>
-                        <input type="text" class="email" >
-                        <div id="error-email"></div>
-                    <label for="Bio" class="form_input_Bio">Bio</label>
-                    <input type="text" class="bio">
-                    <div class="form_photo_input_border">
+                        <input type="text" class="email" id="mail" name="email">
+                        <label for="Bio" class="form_input_Bio">Bio</label>
+                        <input type="text" class="bio" id="biographie" name="bio">
+                    <div class="form_photo_input_border" >
+                        <div class="icon">
+
+                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+
+                        </div>
                         <!-- il faudra peut etre enlever l'attribut placeholder car il parait qu'on ne l'utilise pas pour le type file -->
-                        <input type="file" id="form_input_photo" placeholder="Déposez la photo ici">
+                        <button class="emplacement" type="submit">Déposez la photo <br>ici</button>
+                        <input type="file" id="form_input_photo" name="photo" draggable="true">
+                        <!-- <div id="form_photo"></div> -->
                     </div>
 
                     <div class="button">
                         <button type="submit" id="form_button_submit">Créer</button>
-                        <button type="reset" id="form_button_reset">Rénit</button>
+                        <button type="submit" id="form_button_reset">Rénit</button>
                     </div>
                 </form>
             </div>
@@ -68,14 +71,17 @@
 
         </div>
 
-        <!-- ma liste de contact -->
+
+         <!-- ma liste de contact -->
 
 
-        <div id="liste_des_contacts">
-            <h1 class="mes_titres_2">Liste des contacts</h1>
-            <ul class="mes_titres_2_liste"></ul>
-        </div>
-    </div>
-</body>
+         <div id="liste_des_contacts">
+             <h1 class="mes_titres_2">Liste des contacts</h1>
+             <ul class="mes_titres_2_liste"></ul>
+         </div>
+     </div>
+ </body>
 
-</html>
+ </html>
+
+
