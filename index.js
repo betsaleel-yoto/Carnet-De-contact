@@ -18,18 +18,20 @@ import { image } from './validateImage.js'
 export let tab = getItemContacts();
 const inputs = document.querySelectorAll('input');
 
+
+
 inputs.forEach(element => {
 	element.addEventListener('blur', (e)=>{
 		if(element.id == 'name'){
-			// verifyNom(e.target);
+			verifyNom(e.target);
 		}else if(element.id =='postname'){
 			verifyPrenom(e.target);
 		}else if(element.id == 'phonenumber'){
-			// verifyTelephone(e.target);
-			// verifyPhoneUnique(e.target);
+			verifyTelephone(e.target);
+			verifyPhoneUnique(e.target);
 		}else if(element.id == 'mail'){
-			// verifyMail(e.target);
-			// verifyMailUnique(e.target);
+			verifyMail(e.target);
+			verifyMailUnique(e.target);
 		}else if(element.id == 'form_input_photo'){
 			showFile(e.target);
 		}
@@ -40,12 +42,12 @@ inputs.forEach(element => {
 const form = document.querySelector(".form_style");
 form.addEventListener('submit', event=>{
     event.preventDefault();
-    // validateForm();
+    validateForm();
 });
 
 //Fonction de validation de toutes les fonctions pour permettre l'ajout dans le tableau.
  function validateForm() {
-     if(!verifyNom(nom) || !verifyPrenom(prenom) || !verifyMail(email) || !verifyTelephone(telephone) || verifyMailUnique(email) || verifyPhoneUnique(telephone) || !verifyImage(image)){
+     if(!verifyNom(nom) || !verifyPrenom(prenom) || !verifyMail(email) || !verifyTelephone(telephone) || verifyMailUnique(email) || verifyPhoneUnique(telephone) || showFile(image)){
 		 console.log('les champs false');
      }
      else{
@@ -59,14 +61,18 @@ form.addEventListener('submit', event=>{
 
 // fonction d'ajout des contacts dans le tableau
  function ajouterContact() {
+    const groupe = document.querySelector('.groupe');
+    const bio = document.querySelector('.bio');
+    // const groupeValue= groupe.value.trim();
+    // const bioValue = bio.value.trim();
       tab.push({
         prenom:prenom.value.trim(),
         nom:nom.value.trim(),
         email:email.value.trim(),
         telephone:telephone.value.trim(),
         image:image.value.trim(),
-        // groupe:groupe.value.trim(),
-        // bio:bio.value.trim(),
+        groupe:groupe.value.trim(),
+        bio:bio.value.trim(),
       }
 
       )
@@ -74,8 +80,8 @@ form.addEventListener('submit', event=>{
     prenom.value="";
     email.value="";
     telephone.value="";
-    // groupe.value="";
-    // bio.value="";
+    groupe.value="";
+    bio.value="";
     image.value="";
     setItemcContact(tab)
     console.log(tab)
