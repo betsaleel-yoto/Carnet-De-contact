@@ -47,10 +47,6 @@ let letter= telephonevalue.length;
  */
 export function verifyPhoneUnique(elem){
     const telephonevalue = elem.value.trim();
-    if(tab.length==0){
-            setSucces(telephone);
-            return true;
-    }else{
             for (let index = 0; index < tab.length; index++) {
                 let element= tab[index];
                 if(element.telephone === telephonevalue){
@@ -61,7 +57,6 @@ export function verifyPhoneUnique(elem){
             }
             return true
     }
-}
 
 
 
