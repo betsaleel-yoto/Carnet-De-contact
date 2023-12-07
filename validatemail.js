@@ -28,10 +28,6 @@ export function verifyMail(element){
 
 export function verifyMailUnique(elem){
 const emailValue = elem.value.trim();
-if(tab.length==0){
-    setSucces(email);
-    return true;
-}else{
     for (let index = 0; index < tab.length; index++) {
         let element= tab[index];
         if(element.email === emailValue){
@@ -41,7 +37,6 @@ if(tab.length==0){
 
     }
     return true
-}
 }
 
 

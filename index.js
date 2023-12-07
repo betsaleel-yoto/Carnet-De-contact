@@ -6,7 +6,6 @@ import { verifyPhoneUnique } from './validatelephone.js';
 import { verifyMailUnique } from './validatemail.js';
 import { showFile } from './validateImage.js';
 import { sizeImage } from './validateImage.js';
-import { verifyMailPhoneUnique } from './functionUtil.js';
 
 //Importation des valeurs
 import { email } from './validatemail.js';
