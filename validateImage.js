@@ -1,20 +1,15 @@
-import { SetError } from "./functionUtil.js";
+import { setError } from "./functionUtil.js";
 
 export const image = document.getElementById('form_input_photo');
 const button = document.querySelector(".emplacement")
 export let champAffichage = document.querySelector(".form_photo_input_border")
-// on simule un click sur le champ input file
-button.onclick= ()=>{
-    image.click();
-    console.log("j'ai cliqué");
-}
 
-image.addEventListener('change', function(){
+image.addEventListener('change', function(e){
     // on recupère le fichier selectionné du champ
-    let fichier=this.files[0];
+    let fichier= e.target.files[0];
 
     // traitement et affichage du fichier
-    showFile(fichier)
+    showFile(fichier);
 })
 
 // phase de drag and drop
@@ -28,7 +23,6 @@ champAffichage.addEventListener('dragleave',event=>{
     button.textContent = "Déposez la photo";
 
 })
-
 // gestion de l'acte de drag & drop
 champAffichage.addEventListener('drop', event=>{
     event.preventDefault();
@@ -37,35 +31,42 @@ champAffichage.addEventListener('drop', event=>{
     showFile(fichierDrop);
 })
 
+/**
+ * @param {file} file: le fichier selectionné à cette fonction
+ * @returns
+ */
 export function showFile(file) {
-    //recupération du type du fichier
     let typeFichier = file.type;
-    let extensionFile= ['image/jpg','image/png']
-
-    //vérification de l'extension du fichier
+    let extensionFile = ['image/jpg','image/png', 'image/jpeg']
     if(extensionFile.includes(typeFichier)){
-        let fileReader= new FileReader();
-        fileReader.readAsDataURL(file);
+        //j'extencie l'objet FileReader
 
+        let fileReader= new FileReader();
+        // je prend le fichier(file) et je le lis comme un URL
+        fileReader.readAsDataURL(file);
         fileReader.onload = ()=>{
-            //permet de passer le fichier source de l'image dans le variable cheminUrl
+
+            // récupération du chemin url du fichier
             let cheminUrl= fileReader.result;
 
+            //création de la balise imge qui va contenir l'image
             let photo = `<img src="${cheminUrl} " alt="image">`;
             champAffichage.innerHTML= photo;
+
             return true;
         }
-
     }
-    //j'exprime le poids en o car c'est la convention en js,
-    // donc je transcrit les 5Mo en octets; 1 MégaOctet (Mo) = 1 000 000 octets
-    else if(image.files[0].size/1024*1024 > 5000000 ){
-        SetError(image,'La taille doit etre inférieur à 5Mo');
-        console.log('mauvais 1');
-        return false
-    }else{
-        SetError(image,'Veuillez uploader un bon format');
+return true;
+
+}
+export function sizeImage(elem) {
+    let sizeFile= elem.size;
+    if(sizeFile > 5000000 ){
+        setError(image,' La taille doit etre inférieur à 5Mo');
         return false;
+    }else{
+        return true;
     }
 }
+
 

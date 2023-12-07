@@ -56,7 +56,7 @@ h1 {
     flex-direction: column;
     width: 88%;
     border: 2px solid transparent;
-    height: 50.25rem;
+    height: 70.25rem;
     margin: auto;
     height: 53rem;
 } 
@@ -95,6 +95,7 @@ label {
 .form_photo_input_border img{
     height: 100%;
     width: 100%;
+/* definit comment un élément doit s'adapter à son contenu */
     object-fit: contain;
     border-radius: 5px;
 }
@@ -155,21 +156,10 @@ background-color: #ad2424;
     
 }
 /* enlever la bordure par defaut de tous les inputs */
-/*  */
+
 input:focus{
     outline: none;
 }
-/* span{
-    /* visibility: hidden; 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-} */
-
-
-
-
-
  .error{
     border-color: red;
 } 
@@ -177,9 +167,6 @@ input:focus{
  .succes{
     border-color: green;
 } 
-/* .annuler{
-    border-color: none;
-}  */
 
 
 /* partie responsive */

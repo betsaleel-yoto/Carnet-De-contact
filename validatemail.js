@@ -1,6 +1,6 @@
 import {tab} from './index.js'
-import { SetError } from "./functionUtil.js";
-import { SetSucces } from "./functionUtil.js";
+import { setError } from "./functionUtil.js";
+import { setSucces } from "./functionUtil.js";
 export const email=document.querySelector(".email")
 
  const validateEmail= email =>{
@@ -12,43 +12,36 @@ export function verifyMail(element){
     const emailValue = element.value.trim();
 
     if(emailValue === ''){
-        let message='le Mail ne peut pas etre vide';
-        SetError(email,message);
-        console.log('mauvais');
+        setError(email,'le Mail ne peut pas etre vide');
         return false
-
     }else{
         if (!validateEmail(emailValue)){
-            let message='veuillez renseigner une adresse valide';
-            SetError(email, message);
-            console.log('mauvais');
+            setError(email, 'veuillez renseigner une adresse valide');
             return false
-
         }
          else {
-            SetSucces(email);
+            setSucces(email);
             return true;
-
         }
     }
 }
 
-
 export function verifyMailUnique(elem){
 const emailValue = elem.value.trim();
-    tab.forEach(element => {
+if(tab.length==0){
+    setSucces(email);
+    return true;
+}else{
+    for (let index = 0; index < tab.length; index++) {
+        let element= tab[index];
         if(element.email === emailValue){
-            let message='Cette adresse existe déjà';
-            SetError(email, message);
-            console.log('Cette adresse existe déjà');
-            return false
-
-        }else{
-            SetSucces(email);
-            return true
+            setError(email, 'Cette adresse existe déjà');
+            return false;
         }
 
-    });
+    }
+    return true
+}
 }
 
 

@@ -1,31 +1,33 @@
 //Importation des fonctions
-import {verifyNom} from './validatenom.js'
-import {verifyPrenom} from './validateprenom.js'
-import {verifyMail} from './validatemail.js'
-import {verifyTelephone} from './validatelephone.js'
-import { verifyPhoneUnique } from './validatelephone.js'
-import { verifyMailUnique } from './validatemail.js'
-import { showFile } from './validateImage.js'
+import {verifyNomPrenom} from './validatenom.js';
+import {verifyMail} from './validatemail.js';
+import {verifyTelephone} from './validatelephone.js';
+import { verifyPhoneUnique } from './validatelephone.js';
+import { verifyMailUnique } from './validatemail.js';
+import { showFile } from './validateImage.js';
+import { sizeImage } from './validateImage.js';
+import { verifyMailPhoneUnique } from './functionUtil.js';
 
 //Importation des valeurs
-import { prenom } from './validateprenom.js';
-import { nom } from './validatenom.js';
 import { email } from './validatemail.js';
-import {telephone} from './validatelephone.js'
-import { image } from './validateImage.js'
+import {telephone} from './validatelephone.js';
+import { image } from './validateImage.js';
+import { champAffichage } from './validateImage.js';
 
 
 export let tab = getItemContacts();
+export const groupe = document.querySelector('.groupe');
+export const bio = document.querySelector('.bio');
+export const nom = document.querySelector('.nom');
+export const prenom= document.querySelector('.prenom');
 const inputs = document.querySelectorAll('input');
-
-
 
 inputs.forEach(element => {
 	element.addEventListener('blur', (e)=>{
-		if(element.id == 'name'){
-			verifyNom(e.target);
-		}else if(element.id =='postname'){
-			verifyPrenom(e.target);
+		if(element.id == 'postname'){
+			verifyNomPrenom(e.target);
+		}else if(element.id =='name'){
+			verifyNomPrenom(e.target);
 		}else if(element.id == 'phonenumber'){
 			verifyTelephone(e.target);
 			verifyPhoneUnique(e.target);
@@ -34,6 +36,7 @@ inputs.forEach(element => {
 			verifyMailUnique(e.target);
 		}else if(element.id == 'form_input_photo'){
 			showFile(e.target);
+            sizeImage(e.target);
 		}
 
 	});
@@ -45,24 +48,24 @@ form.addEventListener('submit', event=>{
     validateForm();
 });
 
+//champ de l'image
+champAffichage.addEventListener('click',()=>{
+    image.click();
+})
+
 //Fonction de validation de toutes les fonctions pour permettre l'ajout dans le tableau.
  function validateForm() {
-     if(!verifyNom(nom) || !verifyPrenom(prenom) || !verifyMail(email) || !verifyTelephone(telephone) || verifyMailUnique(email) || verifyPhoneUnique(telephone) || showFile(image)){
-		 console.log('les champs false');
+     if(verifyNomPrenom(prenom) && verifyNomPrenom(nom) && verifyPhoneUnique(telephone) && verifyTelephone(telephone) && verifyMailUnique(email) && verifyMail(email) && showFile(image) && sizeImage(image)){
+		ajouterContact()
      }
      else{
-		ajouterContact()
-
-		console.log('les champs true');
-         return true;
+        return false;
      }
 
  }
-
 // fonction d'ajout des contacts dans le tableau
  function ajouterContact() {
-    const groupe = document.querySelector('.groupe');
-    const bio = document.querySelector('.bio');
+
       tab.push({
         prenom:prenom.value.trim(),
         nom:nom.value.trim(),
@@ -80,7 +83,7 @@ form.addEventListener('submit', event=>{
     telephone.value="";
     groupe.value="";
     bio.value="";
-    image.value="";
+    document.querySelector('.form_photo_input_border img').remove();
     setItemcContact(tab)
     console.log(tab)
 
@@ -98,5 +101,4 @@ form.addEventListener('submit', event=>{
          return tableau ? JSON.parse(tableau):[];
      }
 
-     //OU c'est l'addition
-     //ET c'est la mutiplicaion
+    
