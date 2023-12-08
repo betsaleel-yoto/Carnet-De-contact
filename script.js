@@ -36,6 +36,7 @@ function addContact() {
     group,
     email,
     bio,
+    image: "",
   };
 
   contacts.push(contact);
@@ -49,8 +50,16 @@ function displayContacts() {
 
   contacts.forEach((contact, index) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-      <span class="span_images" id="profilePic"></span>
+    const spanImage = document.createElement("span");
+    spanImage.classList.add("span_images");
+
+    if (contact.image) {
+      spanImage.innerHTML = `<img src="${contact.image}" alt="image">`;
+    }
+
+    li.appendChild(spanImage);
+
+    li.innerHTML += `
       <div class="contacts_details_nom_tel_groupe_paragraphe">
         <div class="nom_et_groupe_tel">
           <span class="prenom_nom_groupe">
@@ -68,8 +77,8 @@ function displayContacts() {
             <p>${contact.bio}</p>
           </span>
         </div>
-      </div>
-    `;
+      </div>`;
+
     contactList.appendChild(li);
   });
   imageShow();
@@ -85,13 +94,17 @@ function editContact(index) {
   document.querySelector(".bio").value = contact.bio;
 
   contacts.splice(index, 1);
-
   displayContacts();
 }
 
 function deleteContact(index) {
-  contacts.splice(index, 1);
-
+  const confirmation = confirm(
+    "Êtes-vous sûr de vouloir supprimer ce contact ?"
+  );
+  if (confirmation) {
+    contacts.splice(index, 1);
+    displayContacts();
+  }
   displayContacts();
 }
 
@@ -99,21 +112,36 @@ function clearForm() {
   document.querySelector(".form_style").reset();
 }
 
+// ... (votre code existant)
+
 function imageShow() {
-  let a = document.querySelector("#profilePic");
-  let b = new FileReader();
-  b.readAsDataURL(PhotoDeProfil.files[0]);
-  b.onload = () => {
-    let c = b.result;
-    a.innerHTML = `<img src="${c}" alt="image">`;
-  };
+  let a = document.querySelectorAll(".span_images");
+  let photoInputs = document.querySelectorAll("#form_input_photo");
+
+  a.forEach((span, index) => {
+    const b = new FileReader();
+
+    // Ajoutez une vérification pour vous assurer que le fichier existe avant de le traiter
+    if (photoInputs[index] && photoInputs[index].files.length > 0) {
+      b.readAsDataURL(photoInputs[index].files[0]);
+
+      b.onload = (e) => {
+        let c = b.result;
+        span.innerHTML = `<img src="${c}" alt="image">`;
+        contacts[index].image = c;
+      };
+    }
+  });
 }
 
 submit.addEventListener("click", function (event) {
   event.preventDefault();
-  getImage.call(PhotoDeProfil);
+  imageShow();
+  getImage.call(PhotoDeProfil); // Déplacez getImage.call(PhotoDeProfil) avant addContact()
   addContact();
 });
+
+// ... (votre code existant)
 
 // Initial display
 displayContacts();
