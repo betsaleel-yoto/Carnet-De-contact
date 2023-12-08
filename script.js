@@ -1,12 +1,17 @@
 // script.js
+import { contacts } from "./index.js";
+// import { image } from "./validateImage.js";
+import { showFile } from "./validateImage.js";
+import { PhotoDeProfil } from "./validateImage.js";
 
-let contacts = [];
+// export let contacts = [];
 const submit = document.querySelector("#form_button_submit");
-const PhotoDeProfil = document.querySelector("#form_input_photo");
+// export const PhotoDeProfil = document.querySelector("#form_input_photo");
 
-function getImage() {
-  console.log("images", this.files[0]);
+export function getImage() {
   const imageToProcess = this.files[0];
+  console.log("images", imageToProcess);
+
   let newImage = new Image(imageToProcess.width, imageToProcess.height);
   newImage.src = URL.createObjectURL(imageToProcess);
 
@@ -21,26 +26,31 @@ function getImage() {
   contactList.appendChild(li);
 }
 
-function addContact() {
-  const firstName = document.querySelector(".prenom").value;
-  const lastName = document.querySelector(".nom").value;
-  const phoneNumber = document.querySelector(".telephone").value;
-  const group = document.querySelector(".groupe").value;
-  const email = document.querySelector(".email").value;
-  const bio = document.querySelector(".bio").value;
+export const firstName = document.querySelector(".prenom");
+console.log('name',firstName);
+export const lastName = document.querySelector(".nom");
+export const phoneNumber = document.querySelector(".telephone");
+export const group = document.querySelector(".groupe");
+export const email = document.querySelector(".email");
+console.log(email);
+export const bio = document.querySelector(".bio");
+export function addContact() {
 
-  const contact = {
-    firstName,
-    lastName,
-    phoneNumber,
-    group,
-    email,
-    bio,
-    image: "",
-  };
+  contacts.push({
+    firstName:firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    phoneNumber:phoneNumber.value.trim(),
+    group:group.value.trim(),
+    email:email.value.trim(),
+    bio:bio.value.trim(),
+    image: PhotoDeProfil.value.trim(),
+  });
 
-  contacts.push(contact);
+  // contacts.push(contact);
+  console.log(contacts);
   displayContacts();
+  getImage(contacts.image)
+  document.querySelector('.form_photo_input_border img').remove();
   clearForm();
 }
 
@@ -81,7 +91,7 @@ function displayContacts() {
 
     contactList.appendChild(li);
   });
-  imageShow();
+  showFile(PhotoDeProfil);
 }
 
 function editContact(index) {
@@ -114,34 +124,34 @@ function clearForm() {
 
 // ... (votre code existant)
 
-function imageShow() {
-  let a = document.querySelectorAll(".span_images");
-  let photoInputs = document.querySelectorAll("#form_input_photo");
+// function imageShow() {
+//   let a = document.querySelectorAll(".span_images");
+//   let photoInputs = document.querySelectorAll("#form_input_photo");
 
-  a.forEach((span, index) => {
-    const b = new FileReader();
+//   a.forEach((span, index) => {
+//     const b = new FileReader();
 
-    // Ajoutez une vérification pour vous assurer que le fichier existe avant de le traiter
-    if (photoInputs[index] && photoInputs[index].files.length > 0) {
-      b.readAsDataURL(photoInputs[index].files[0]);
+//     // Ajoutez une vérification pour vous assurer que le fichier existe avant de le traiter
+//     if (photoInputs[index] && photoInputs[index].files.length > 0) {
+//       b.readAsDataURL(photoInputs[index].files[0]);
 
-      b.onload = (e) => {
-        let c = b.result;
-        span.innerHTML = `<img src="${c}" alt="image">`;
-        contacts[index].image = c;
-      };
-    }
-  });
-}
+//       b.onload = (e) => {
+//         let c = b.result;
+//         span.innerHTML = `<img src="${c}" alt="image">`;
+//         contacts[index].image = c;
+//       };
+//     }
+//   });
+// }
 
-submit.addEventListener("click", function (event) {
-  event.preventDefault();
-  imageShow();
-  getImage.call(PhotoDeProfil); // Déplacez getImage.call(PhotoDeProfil) avant addContact()
-  addContact();
-});
+// submit.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   imageShow();
+//   getImage.call(PhotoDeProfil); // Déplacez getImage.call(PhotoDeProfil) avant addContact()
+//   addContact();
+// });
 
 // ... (votre code existant)
 
 // Initial display
-displayContacts();
+// displayContacts();

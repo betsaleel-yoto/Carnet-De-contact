@@ -64,14 +64,49 @@ form input {
   padding: 15px;
   color: #454545;
 }
+
+
+.form_photo_input_border .icon{
+  font-size: 50px;
+  color: #077FD5;
+  margin: 10px 10px;
+
+
+}
 .form_photo_input_border {
   border: 2px dashed #d0cdcd;
   margin-top: 2rem;
   height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .form_photo_input_border input {
   padding-bottom: 8rem;
+  visibility: hidden;
+}
+.form_photo_input_border .emplacement{
+  border: none;
+  background-color: #fff;
+}
+/* .form_photo_input_border .emplacement br{
+  border: none;
+  background-color: #fff;
+  float: ;
+} */
+
+/* coté js */
+.form_photo_input_border img{
+  height: 100%;
+  width: 100%;
+/* definit comment un élément doit s'adapter à son contenu */
+  object-fit: contain;
+  border-radius: 5px;
+}
+.form_photo_input_border.active{
+  border : 2px solid green;
 }
 
 /* #form_input_photo {
@@ -161,6 +196,19 @@ li {
 .span_images img {
   padding: 2rem;
 }
+
+/* enlever la bordure par defaut de tous les inputs */
+
+input:focus{
+  outline: none;
+}
+.error{
+  border-color: red;
+} 
+
+.succes{
+  border-color: green;
+} 
 
 /* partie responsive */
 
