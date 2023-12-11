@@ -65,29 +65,28 @@ form input {
   color: #454545;
 }
 
-
-.form_photo_input_border .icon{
+.form_photo_input_border .icon {
   font-size: 50px;
-  color: #077FD5;
+  color: #077fd5;
   margin: 10px 10px;
-
-
 }
 .form_photo_input_border {
   border: 2px dashed #d0cdcd;
   margin-top: 2rem;
-  height: 20rem;
+  height: 15rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .form_photo_input_border input {
   padding-bottom: 8rem;
   visibility: hidden;
+  text-align: center;
 }
-.form_photo_input_border .emplacement{
+.form_photo_input_border .emplacement {
   border: none;
   background-color: #fff;
 }
@@ -98,23 +97,21 @@ form input {
 } */
 
 /* coté js */
-.form_photo_input_border img{
+.form_photo_input_border img {
   height: 100%;
   width: 100%;
-/* definit comment un élément doit s'adapter à son contenu */
+  /* definit comment un élément doit s'adapter à son contenu */
   object-fit: contain;
   border-radius: 5px;
 }
-.form_photo_input_border.active{
-  border : 2px solid green;
+.form_photo_input_border.active {
+  border: 2px solid green;
 }
 
 /* #form_input_photo {
   opacity: 0;
 } */
-* .input_photo {
-  text-align: center;
-}
+
 /* .form_input_photo_label {
   margin-left: 16rem;
   position: relative;
@@ -139,6 +136,7 @@ form input {
 }
 button {
   border: none;
+  background-color: white;
 }
 
 .button button {
@@ -173,7 +171,6 @@ button {
 /* ma liste de contact */
 
 #liste_des_contacts {
-  border: 2px solid transparent;
   width: 50%;
 }
 
@@ -184,6 +181,7 @@ img {
 }
 li {
   display: flex;
+  flex-wrap: wrap;
   border: 2px solid #e1e1e1;
 }
 .contacts_details_nom_tel_groupe_paragraphe {
@@ -199,18 +197,43 @@ li {
 
 /* enlever la bordure par defaut de tous les inputs */
 
-input, textarea:focus{
+input,
+textarea:focus {
   outline: none;
 }
-.error{
+.error {
   border-color: red;
-} 
+}
 
-.succes{
+.succes {
   border-color: green;
 }
-.liste{
+.liste {
   display: flex;
+  padding-top: 23px;
+  height: 24%;
+  padding-left: 25px;
+  border: 1px solid #e1e1e1;
+}
+.btndelete {
+  color: red;
+}
+.conteneurInfo {
+  width: 70%;
+}
+
+.conteneurInfo p {
+  position: relative;
+  top: 3rem;
+  padding-bottom: 2rem;
+}
+.spanicondelete {
+  position: relative;
+  left: 25rem;
+}
+.spaniconmodify {
+  position: relative;
+  left: 24.5rem;
 }
 /* scroll bar sur la liste des contacts */
 /* .ma_liste{
@@ -218,9 +241,9 @@ input, textarea:focus{
   height: 100px;
   overflow-x: scroll;
   scrollbar-color: rebeccapurple green;
-  /* scrollbar-width: thin; */
-} */
-
+  /* scrollbar-width: thin; 
+} 
+*/
 /* partie responsive */
 
 @media only screen and (max-width: 1186px) {
@@ -253,5 +276,66 @@ input, textarea:focus{
 
   .titre_principal {
     text-align: center;
+  }
+}
+@media only screen and (max-width: 1186px) {
+  .formulaire_et_liste_des_contacts {
+    gap: 15rem;
+  }
+  img {
+    width: 90px;
+    height: 90px;
+    /* border-radius: 50%; */
+  }
+  .conteneurInfo p {
+    font-size: 13px;
+  }
+  .conteneurInfo {
+    position: relative;
+    bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 864px) {
+  .paragraphe span {
+    position: relative;
+    left: 5rem;
+  }
+}
+@media only screen and (max-width: 558px) {
+  .paragraphe span {
+    position: relative;
+    left: 3rem;
+  }
+}
+@media only screen and (max-width: 539px) {
+  .paragraphe span {
+    position: relative;
+    left: 1rem;
+  }
+}
+@media only screen and (max-width: 510px) {
+  #formulaire {
+    position: relative;
+    right: 6px;
+  }
+}
+@media only screen and (max-width: 398px) {
+  #formulaire {
+    position: relative;
+    right: 12px;
+  }
+  li {
+    position: relative;
+    left: 1px;
+  }
+}
+@media only screen and (max-width: 387px) {
+  li {
+    position: relative;
+    right: 2rem;
+  }
+  h1 {
+    font-size: 20px;
   }
 }

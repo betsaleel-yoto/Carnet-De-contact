@@ -3,7 +3,6 @@ import { setSucces } from "./functionUtil.js";
 
 export function verifyNomPrenom(element){
     const uservalue = element.value.trim();
-    console.log(uservalue);
     let letter= uservalue.length;
 
     if(letter < 3 ){

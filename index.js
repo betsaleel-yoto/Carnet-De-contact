@@ -1,43 +1,36 @@
 //Importation des fonctions
-import {addContact, displayContacts} from './script.js'
+import {displayContacts} from './affichage.js'
 import {verifyNomPrenom} from './validatenom.js';
-import {verifyMail} from './validatemail.js';
-import {verifyTelephone} from './validatelephone.js';
-import { verifyPhoneUnique } from './validatelephone.js';
-import { verifyMailUnique } from './validatemail.js';
-import { showFile } from './validateImage.js';
-import { sizeImage } from './validateImage.js';
-import {clearForm} from './script.js'
-// import {displayContacts} from './script.js'
+import {verifyMail, verifyMailUnique} from './validatemail.js';
+import {verifyTelephone, verifyPhoneUnique} from './validatelephone.js';
+import { showFile, sizeImage ,imgageUrl } from './validateImage.js';
+import {clearForm} from './edition.js'
+import { PhotoDeProfil, champAffichage } from './validateImage.js';
 
-//Importation des valeurs
-// import { email } from './validatemail.js';
-// import {telephone} from './validatelephone.js';
-import { PhotoDeProfil } from './validateImage.js';
-import { champAffichage } from './validateImage.js';
-import { firstName } from './script.js';
-import { lastName } from './script.js';
-// import { group } from './script.js';
-import {email} from './script.js';
-// import { bio } from './script.js';
-import { phoneNumber } from './script.js';
-
+export const firstName = document.querySelector(".prenom");
+export const lastName = document.querySelector(".nom");
+export const phoneNumber = document.querySelector(".telephone");
+export const group = document.querySelector(".groupe");
+export const email = document.querySelector(".email");
+export const bio = document.querySelector(".bio");
+export let conteneurImage = document.querySelector('.form_photo_input_border img')
 
 const reunitialisation = document.querySelector('#form_button_reset')
+const submit = document.querySelector('#form_button_submit')
+
 export let contacts = window.localStorage.getItem("contacts");
+
 if (contacts=== null) {
     contacts=[]
  }else{
     contacts=JSON.parse(contacts)
-    console.log(contacts);
     displayContacts()
  }
-reunitialisation.addEventListener('click',()=>{
+reunitialisation.addEventListener('click',(event)=>{
+    event.preventDefault();
     clearForm();
 });
 
-
-console.log(contacts);
 const inputs = document.querySelectorAll('input');
 
 inputs.forEach(element => {
@@ -60,8 +53,7 @@ inputs.forEach(element => {
 	});
 });
 
-const form = document.querySelector(".form_style");
-form.addEventListener('submit', event=>{
+submit.addEventListener('click', event=>{
     event.preventDefault();
     validateForm();
 
@@ -72,11 +64,8 @@ champAffichage.addEventListener('click',()=>{
     PhotoDeProfil.click();
 })
 
-
-
 //Fonction de validation de toutes les fonctions pour permettre l'ajout dans le tableau.
  function validateForm() {
-    console.log('mmm', verifyMailUnique(email));
      if(verifyNomPrenom(firstName) && verifyNomPrenom(lastName) && verifyPhoneUnique(phoneNumber) && verifyTelephone(phoneNumber) && verifyMailUnique(email) && verifyMail(email) && showFile(PhotoDeProfil) && sizeImage(PhotoDeProfil)){
 		addContact()
      }
@@ -85,8 +74,32 @@ champAffichage.addEventListener('click',()=>{
      }
 
  }
- export function setItemcContact(contact){
-         window.localStorage.setItem("contacts", JSON.stringify(contact));
+function addContact() {
+
+    contacts.push({
+      firstName:firstName.value.trim(),
+      lastName: lastName.value.trim(),
+      phoneNumber:phoneNumber.value.trim(),
+      group:group.value.trim(),
+      email:email.value.trim(),
+      bio:bio.value.trim(),
+      image: imgageUrl,
+    });
+    firstName.value='';
+    lastName.value='';
+    phoneNumber.value='';
+    group.value='';
+    email.value='';
+    bio.value='';
+    conteneurImage= '';
+
+    displayContacts();
+    setItemcContact(contacts)
+
+  }
+
+  function setItemcContact(contact){
+         localStorage.setItem("contacts", JSON.stringify(contact));
 
      }
 

@@ -28,7 +28,6 @@ export function verifyMail(element){
 
 export function verifyMailUnique(elem){
 const emailValue = elem.value.trim();
-console.log(emailValue);
     for (let index = 0; index < contacts.length; index++) {
         let element= contacts[index];
         if(element.email === emailValue){
