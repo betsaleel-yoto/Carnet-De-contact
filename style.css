@@ -125,7 +125,7 @@ form input {
 .h1_form_button_border {
   width: 90%;
   border: 2px solid #e1e1e1;
-  height: 56rem;
+  height: 69rem;
   margin-left: 25px;
 }
 
@@ -199,7 +199,7 @@ li {
 
 /* enlever la bordure par defaut de tous les inputs */
 
-input:focus{
+input, textarea:focus{
   outline: none;
 }
 .error{
@@ -208,7 +208,18 @@ input:focus{
 
 .succes{
   border-color: green;
-} 
+}
+.liste{
+  display: flex;
+}
+/* scroll bar sur la liste des contacts */
+/* .ma_liste{
+  width: 300px;
+  height: 100px;
+  overflow-x: scroll;
+  scrollbar-color: rebeccapurple green;
+  /* scrollbar-width: thin; */
+} */
 
 /* partie responsive */
 

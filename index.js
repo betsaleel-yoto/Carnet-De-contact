@@ -1,5 +1,5 @@
 //Importation des fonctions
-import {addContact} from './script.js'
+import {addContact, displayContacts} from './script.js'
 import {verifyNomPrenom} from './validatenom.js';
 import {verifyMail} from './validatemail.js';
 import {verifyTelephone} from './validatelephone.js';
@@ -7,7 +7,8 @@ import { verifyPhoneUnique } from './validatelephone.js';
 import { verifyMailUnique } from './validatemail.js';
 import { showFile } from './validateImage.js';
 import { sizeImage } from './validateImage.js';
-import {getImage} from './script.js'
+import {clearForm} from './script.js'
+// import {displayContacts} from './script.js'
 
 //Importation des valeurs
 // import { email } from './validatemail.js';
@@ -22,13 +23,21 @@ import {email} from './script.js';
 import { phoneNumber } from './script.js';
 
 
+const reunitialisation = document.querySelector('#form_button_reset')
+export let contacts = window.localStorage.getItem("contacts");
+if (contacts=== null) {
+    contacts=[]
+ }else{
+    contacts=JSON.parse(contacts)
+    console.log(contacts);
+    displayContacts()
+ }
+reunitialisation.addEventListener('click',()=>{
+    clearForm();
+});
 
-export let contacts = getItemContacts();
-// export const groupe = document.querySelector('.groupe');
-// console.log(groupe);
-// export const bio = document.querySelector('.bio');
-// export const nom = document.querySelector('.nom');
-// export const prenom= document.querySelector('.prenom');
+
+console.log(contacts);
 const inputs = document.querySelectorAll('input');
 
 inputs.forEach(element => {
@@ -55,11 +64,6 @@ const form = document.querySelector(".form_style");
 form.addEventListener('submit', event=>{
     event.preventDefault();
     validateForm();
-    // imageShow();
-    getImage.call(PhotoDeProfil); // Déplacez getImage.call(PhotoDeProfil) avant addContact()
-    console.log('formbtn', getImage.call(PhotoDeProfil));
-    // displayContacts();
-
 
 });
 
@@ -67,6 +71,8 @@ form.addEventListener('submit', event=>{
 champAffichage.addEventListener('click',()=>{
     PhotoDeProfil.click();
 })
+
+
 
 //Fonction de validation de toutes les fonctions pour permettre l'ajout dans le tableau.
  function validateForm() {
@@ -79,42 +85,11 @@ champAffichage.addEventListener('click',()=>{
      }
 
  }
-// // fonction d'ajout des contacts dans le tableau
-//  function ajouterContact() {
-
-//       tab.push({
-//         prenom:prenom.value.trim(),
-//         nom:nom.value.trim(),
-//         email:email.value.trim(),
-//         telephone:telephone.value.trim(),
-//         image:image.value.trim(),
-//         groupe:groupe.value.trim(),
-//         bio:bio.value.trim(),
-//       }
-
-//       )
-//     nom.value="";
-//     prenom.value="";
-//     email.value="";
-//     telephone.value="";
-//     groupe.value="";
-//     bio.value="";
-//     document.querySelector('.form_photo_input_border img').remove();
-//     setItemcContact(tab)
-//     console.log(tab)
-
-//  }
-
- // les fonctions de sauvegarde des informations dans le stockage local
- function setItemcContact(contact){
-     // console.log('save');
-         localStorage.setItem("contacts", JSON.stringify(contact));
+ export function setItemcContact(contact){
+         window.localStorage.setItem("contacts", JSON.stringify(contact));
 
      }
-     function getItemContacts(){
-        //  localStorage.clear()
-         let tableau= localStorage.getItem("contact")
-         return tableau ? JSON.parse(tableau):[];
-     }
+
+
 
     

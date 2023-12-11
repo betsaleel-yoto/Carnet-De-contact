@@ -3,7 +3,8 @@ export const PhotoDeProfil = document.querySelector("#form_input_photo");
 
 // export const image = document.getElementById('form_input_photo');
 const button = document.querySelector(".emplacement")
-export let champAffichage = document.querySelector(".form_photo_input_border")
+export let champAffichage = document.querySelector(".form_photo_input_border");
+export let imgageUrl;
 
 PhotoDeProfil.addEventListener('change', function(e){
     // on recupère le fichier selectionné du champ
@@ -48,10 +49,10 @@ export function showFile(file) {
         fileReader.onload = ()=>{
 
             // récupération du chemin url du fichier
-            let cheminUrl= fileReader.result;
+            imgageUrl= fileReader.result;
 
             //création de la balise imge qui va contenir l'image
-            let photo = `<img src="${cheminUrl} " alt="image">`;
+            let photo = `<img src="${imgageUrl} " alt="image">`;
             champAffichage.innerHTML= photo;
 
             return true;

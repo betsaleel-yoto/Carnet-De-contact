@@ -1,28 +1,20 @@
-// script.js
 import { contacts } from "./index.js";
-// import { image } from "./validateImage.js";
 import { showFile } from "./validateImage.js";
 import { PhotoDeProfil } from "./validateImage.js";
+import { imgageUrl } from "./validateImage.js";
+import {setItemcContact} from "./index.js"
 
-// export let contacts = [];
 const submit = document.querySelector("#form_button_submit");
-// export const PhotoDeProfil = document.querySelector("#form_input_photo");
 
 export function getImage() {
-  const imageToProcess = this.files[0];
-  console.log("images", imageToProcess);
-
-  let newImage = new Image(imageToProcess.width, imageToProcess.height);
-  newImage.src = URL.createObjectURL(imageToProcess);
-
+  let newImage = new Image(imgageUrl.width, imgageUrl.height);
+  newImage.src = imgageUrl;
   const spanImage = document.createElement("span");
   spanImage.classList.add("span_images");
   spanImage.appendChild(newImage);
-
   const contactList = document.querySelector(".ma_liste");
   const li = document.createElement("li");
   li.appendChild(spanImage);
-
   contactList.appendChild(li);
 }
 
@@ -34,6 +26,8 @@ export const group = document.querySelector(".groupe");
 export const email = document.querySelector(".email");
 console.log(email);
 export const bio = document.querySelector(".bio");
+let conteneurImage = document.querySelector('.form_photo_input_border imgm')
+
 export function addContact() {
 
   contacts.push({
@@ -43,67 +37,89 @@ export function addContact() {
     group:group.value.trim(),
     email:email.value.trim(),
     bio:bio.value.trim(),
-    image: PhotoDeProfil.value.trim(),
+    image: imgageUrl,
   });
-
-  // contacts.push(contact);
+  conteneurImage='';
   console.log(contacts);
   displayContacts();
-  getImage(contacts.image)
-  document.querySelector('.form_photo_input_border img').remove();
-  clearForm();
+  setItemcContact(contacts)
+  console.log(contacts);
+
 }
 
-function displayContacts() {
+export function displayContacts() {
+  const cont= document.querySelector("#liste_des_contacts")
   const contactList = document.querySelector(".ma_liste");
+
   contactList.innerHTML = "";
+for(let index = 0; index< contacts.length; index++){
+  const li = document.createElement("li");
+  li.setAttribute('class','liste');
+  const spanImage = document.createElement("span");
+  spanImage.classList.add("span_images");
 
-  contacts.forEach((contact, index) => {
-    const li = document.createElement("li");
-    const spanImage = document.createElement("span");
-    spanImage.classList.add("span_images");
+  if (contacts[index].image) {
+    spanImage.innerHTML = `<img src="${contacts[index].image}" alt="image">`;
+  }
+  else{
+    conteneurImage = '<img src="image/bonhomme1.png" alt="image">';
+    spanImage.innerHTML= conteneurImage;
+  }
+  li.appendChild(spanImage);
+  let conteneurInfo = document.createElement('div');
+  li.appendChild(conteneurInfo)
+  let paragraphe = document.createElement('p');
+  paragraphe.innerText=`${contacts[index].firstName} ${contacts[index].lastName} - ${contacts[index].group}`
 
-    if (contact.image) {
-      spanImage.innerHTML = `<img src="${contact.image}" alt="image">`;
-    }
+  // button modifier
+  const btnmodify = document.createElement("button");
+  btnmodify.setAttribute('class','modify');
+  btnmodify.innerHTML= '<i class="fa-thin fa-pen-to-square"></i>';
+  paragraphe.appendChild(btnmodify);
+  btnmodify.addEventListener('click',() =>{
+    editContact(index)
 
-    li.appendChild(spanImage);
+  } )
 
-    li.innerHTML += `
-      <div class="contacts_details_nom_tel_groupe_paragraphe">
-        <div class="nom_et_groupe_tel">
-          <span class="prenom_nom_groupe">
-            <p>${contact.firstName} ${contact.lastName} - ${contact.group}
-              <button onclick="editContact(${index})">modifier</button>
-              <button onclick="deleteContact(${index})">supprimer</button>
-            </p>
-          </span><br>
-          <span class="telephone">
-            <p>${contact.phoneNumber}</p>
-          </span><br>
-        </div>
-        <div class="paragraphe_bio">
-          <span class="paragraphe_propre">
-            <p>${contact.bio}</p>
-          </span>
-        </div>
-      </div>`;
+  //button supprimer
+  const btnsupprimer = document.createElement("button");
+  btnsupprimer.setAttribute('class','supprimer');
+  btnsupprimer.innerHTML= '<i class="fa-solid fa-trash-can"></i>';
+  paragraphe.appendChild(btnsupprimer);
+  btnsupprimer.addEventListener('click',() =>{
+    deleteContact(index)
+  })
+  conteneurInfo.appendChild(paragraphe);
 
-    contactList.appendChild(li);
-  });
-  showFile(PhotoDeProfil);
+  let paragraphephone= document.createElement('p');
+  paragraphephone.innerText=`${contacts[index].phoneNumber}`
+  let paragraphebio = document.createElement('p');
+  paragraphebio.innerText= `${contacts[index].bio}`
+  conteneurInfo.appendChild(paragraphephone);
+  conteneurInfo.appendChild(paragraphebio);
+
+  contactList.appendChild(li);
+  // let divcontavtList = document.createElement('div');
+  // divcontavtList.setAttribute('class','divcontavtList');
+  // divcontavtList.appendChild(contactList)
+  // cont.appendChild(divcontavtList)
+  // setItemcContact(contacts);
+
+}
 }
 
 function editContact(index) {
   const contact = contacts[index];
-  document.querySelector(".prenom").value = contact.firstName;
-  document.querySelector(".nom").value = contact.lastName;
-  document.querySelector(".telephone").value = contact.phoneNumber;
-  document.querySelector(".groupe").value = contact.group;
-  document.querySelector(".email").value = contact.email;
-  document.querySelector(".bio").value = contact.bio;
+  firstName.value = contact.firstName;
+  lastName.value = contact.lastName;
+  phoneNumber.value = contact.phoneNumber;
+  group.value = contact.group;
+  email.value = contact.email;
+  bio.value = contact.bio;
+  // imgageUrl = contact.image;
 
   contacts.splice(index, 1);
+
   displayContacts();
 }
 
@@ -116,42 +132,10 @@ function deleteContact(index) {
     displayContacts();
   }
   displayContacts();
+  // setItemcContact(contacts);
 }
 
-function clearForm() {
+export function clearForm() {
+  conteneurImage='';
   document.querySelector(".form_style").reset();
 }
-
-// ... (votre code existant)
-
-// function imageShow() {
-//   let a = document.querySelectorAll(".span_images");
-//   let photoInputs = document.querySelectorAll("#form_input_photo");
-
-//   a.forEach((span, index) => {
-//     const b = new FileReader();
-
-//     // Ajoutez une vérification pour vous assurer que le fichier existe avant de le traiter
-//     if (photoInputs[index] && photoInputs[index].files.length > 0) {
-//       b.readAsDataURL(photoInputs[index].files[0]);
-
-//       b.onload = (e) => {
-//         let c = b.result;
-//         span.innerHTML = `<img src="${c}" alt="image">`;
-//         contacts[index].image = c;
-//       };
-//     }
-//   });
-// }
-
-// submit.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   imageShow();
-//   getImage.call(PhotoDeProfil); // Déplacez getImage.call(PhotoDeProfil) avant addContact()
-//   addContact();
-// });
-
-// ... (votre code existant)
-
-// Initial display
-// displayContacts();
